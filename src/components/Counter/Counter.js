@@ -1,12 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import style from "../Counter/Counter.module.css";
 
-const Counter = ({ id, onDeleteCount }) => {
-  const [value, setValue] = useState(0);
-  const handleIncrement = () => setValue(value + 1);
-  const handleDecrement = () => setValue(Math.max(value - 1, 0));
-  const handleReset = () => setValue(0);
-
+const Counter = ({ onDeleteCount, value, handleValue, index }) => {
   return (
     <>
       <div>
@@ -20,28 +15,28 @@ const Counter = ({ id, onDeleteCount }) => {
             <button
               className={style.btn}
               tupe="button"
-              onClick={handleDecrement}
+              onClick={() => handleValue(index, "decr")}
             >
               -
             </button>
             <button
               className={style.btntwo}
               tupe="button"
-              onClick={handleReset}
+              onClick={() => handleValue(index, "reset")}
             >
               Reset
             </button>
             <button
               className={style.btn}
               tupe="button"
-              onClick={handleIncrement}
+              onClick={() => handleValue(index, "increment")}
             >
               +
             </button>
             <button
               className={style.btntwo}
               tupe="button"
-              onClick={() => onDeleteCount(id)}
+              onClick={() => onDeleteCount(index)}
             >
               Удалить
             </button>
